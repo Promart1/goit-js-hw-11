@@ -23,7 +23,7 @@
   
   button {
     min-width: 100px;
-    background: olive;
+    background: gray;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border: 0px;
     border-radius: 5px;
@@ -33,6 +33,7 @@
     line-height: 1.5;
     cursor: pointer;
     padding: 8px 24px;
+    margin-top: 20px;
 
   }
   button:hover,
@@ -41,7 +42,7 @@
   }
   .search-form-container {
     position: fixed;
-    top: 0;
+    top: 60px;
     width: 100%;
     background-color: gainsboro;
     z-index: 3;
@@ -64,4 +65,12 @@
     outline: none;
   }
   
- 
+  .load-more {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+  }
+  .hide {
+    display: none;
+  }
