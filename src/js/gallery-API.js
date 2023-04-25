@@ -1,50 +1,38 @@
 import axios from 'axios';
 
-const KEY = '35723432-df7b45da1818f873f544fd3bd';
-const URL = 'https://pixabay.com/api/';
+const BASE_URL = 'https://pixabay.com/api/';
+const API_KEY = '35723432-df7b45da1818f873f544fd3bd';
+const searchParams = new URLSearchParams({
+  image_type: 'photo',
+  orientation: 'horizontal',
+  safesearch: 'true',
+  per_page: 40,
+});
 
-export default class GalleryApi {
+export default class galleryApi {
   constructor() {
-    this.name = '';
+    this.searchQuery = '';
     this.page = 1;
-    this.perPage = 40;
-    this.totalPages = 0;
   }
 
-  async getImages() {
-    try {
-      const response = await axios.get(`${URL}`, {
-        params: {
-          key: `${KEY}`,
-          q: `${this.name}`,
-          image_type: 'photo',
-          orientation: 'horizontal',
-          safesearch: 'true',
-          per_page: `${this.perPage}`,
-          page: `${this.page}`,
-        },
-      });
-      this.incrementPage();
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  incrementPage() {
+  async getImage() {
+    const response = await axios.get(
+      `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&${searchParams}&page=${this.page}`
+    );
     this.page += 1;
+
+    return response.data;
   }
+
   resetPage() {
     this.page = 1;
   }
 
-  get getName() {
-    return this.name;
-  }
-  set setName(newName) {
-    this.name = newName;
+  get query() {
+    return this.searchQuery;
   }
 
-  set setTotalPages(newTotalPages) {
-    this.totalPages = newTotalPages;
+  set query(newQuery) {
+    this.searchQuery = newQuery;
   }
 }
