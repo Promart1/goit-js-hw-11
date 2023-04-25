@@ -3,7 +3,7 @@ import axios from 'axios';
 const KEY = '35723432-df7b45da1818f873f544fd3bd';
 const URL = 'https://pixabay.com/api/';
 
-export default class GalleryApiService {
+export default class GalleryApi {
   constructor() {
     this.name = '';
     this.page = 1;
